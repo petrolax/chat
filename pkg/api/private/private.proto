@@ -1,0 +1,18 @@
+syntax = "proto3";
+package go.private.plants;
+option go_package = "github.com/petrolax/chat/pkg/api/private;private";
+
+service PlantsApi {
+  rpc GetPlants(GetPlantsRequest) returns (GetPlantsResponse);
+}
+
+message GetPlantsRequest {}
+
+message GetPlantsResponse {
+  repeated Plant plants = 1;
+}
+
+message Plant {
+  uint32 id = 1;
+  string name = 2;
+}

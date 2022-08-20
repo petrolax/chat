@@ -1,0 +1,58 @@
+syntax = "proto3";
+package go.public.plants;
+option go_package = "github.com/petrolax/chat/pkg/api/public;public";
+
+service PlantsApi {
+    rpc AddPlant(AddPlantRequest) returns (AddPlantResponse);
+    rpc UpdatePlant(UpdatePlantRequest) returns (UpdatePlantResponse);
+    rpc GetPlant(GetPlantRequest) returns (GetPlantResponse);
+    rpc GetPlants(GetPlantsRequest) returns (GetPlantsResponse);
+    rpc DeletePlant(DeletePlantRequest) returns (DeletePlantResponse);
+}
+
+message AddPlantRequest {
+    string name = 1;
+}
+
+message AddPlantResponse {
+    Plant plant = 1;
+}
+
+message UpdatePlantRequest {
+    string old_name = 1;
+    string new_name = 2;
+}
+
+message UpdatePlantResponse {
+    Plant plant = 1;
+}
+
+message GetPlantRequest {
+    string name = 1;
+}
+
+message GetPlantResponse {
+    Plant plant = 1;
+}
+
+message GetPlantsRequest {}
+
+message GetPlantsResponse {
+    repeated Plant plants = 1;
+}
+ 
+message DeletePlantRequest {
+    string name = 1;
+}
+
+message DeletePlantResponse {}
+
+message Plant {
+    uint32 id = 1;
+    string name = 2;
+}
+ 
+
+
+
+
