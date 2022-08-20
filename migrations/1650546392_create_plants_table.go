@@ -11,19 +11,21 @@ func init() {
 
 type migrationInit struct{}
 
-type plant struct {
-	ID   uint   `gorm:"primaryKey"`
-	Name string `gorm:"not null;unique"`
+type auth struct {
+	Id       int64  `gorm:"primaryKey"`
+	Username string `gorm:"not null;unique"`
+	Login    string `gorm:"not null;unique"`
+	Password string `gorm:"not null;unique"`
 }
 
-func (plant) TableName() string {
-	return "plants"
+func (auth) AuthTableName() string {
+	return "auth_data_table"
 }
 
 func (m *migrationInit) Up(db *gorm.DB, log migorm.Logger) error {
-	return db.AutoMigrate(&plant{}).Error
+	return db.AutoMigrate(&auth{}).Error
 }
 
 func (m *migrationInit) Down(db *gorm.DB, log migorm.Logger) error {
-	return db.DropTableIfExists(&plant{}).Error
+	return db.DropTableIfExists(&auth{}).Error
 }

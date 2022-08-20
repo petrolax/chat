@@ -1,1 +1,1 @@
-CREATE SCHEMA plants;
+CREATE SCHEMA chat;
